@@ -2,9 +2,15 @@ const PhoneSchema = require('../models/Phone');
 
 const getData = (req, res) => {
   PhoneSchema.find().then((data) => {
-    res.status(200).json(data)
+    res.status(200).json({
+      error: false,
+      listContact: data
+    })
   }).catch((err) => {
-    res.status(500).send(data);
+    res.status(500).json({
+      error: true,
+      message: err
+    });
   });
 }
 
