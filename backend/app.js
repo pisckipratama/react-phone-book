@@ -18,7 +18,7 @@ const config = {
 
 firebase.initializeApp(config);
 
-const indexRouter = require('./routes/phone');
+const phoneRouter = require('./routes/phone');
 
 const app = express();
 
@@ -30,11 +30,11 @@ app.use('*', cors());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', indexRouter);
+app.use('/api/phonebooks', phoneRouter);
 
-const userSchema = require('./graphql').userSchema;
+const phoneSchema = require('./graphql').phoneSchema;
 app.use('/graphql', cors(), graphqlHTTP({
-  schema: userSchema,
+  schema: phoneSchema,
   rootValue: global,
   graphiql: true
 }))
