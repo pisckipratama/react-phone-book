@@ -1,48 +1,49 @@
-import React, { Component, Fragment } from 'react';
-import Post from '../components/Post';
-
-const API_URL = `http://localhost:3001/api/phonebooks`;
+import React, { Component } from 'react';
+import Phone from './PhoneActive';
+import { connect } from 'react-redux';
+import { loadPhone } from '../actions'
 
 class PhoneList extends Component {
-  state = {
-    list: []
-  }
 
   componentDidMount() {
-    fetch(API_URL)
-      .then(response => response.json())
-      .then(json => {
-        this.setState({
-          list: json.listContact
-        })
-      });
+    this.props.loadPhone();
   }
 
   render() {
-    return (
-      <Fragment>
-        <div className="container">
-          <table className="table table-stripped">
-            <thead>
-              <tr>
-                <th scope="col">No</th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                this.state.list.map((item, index) => {
-                  return <Post key={item._id} num={index + 1} name={item.name} phone={item.phone}></Post>
-                })
-              }
-            </tbody>
-          </table>
-        </div>
-      </Fragment>
+    console.log(this.props)
+    const nodes = this.props.phones.map((item, index) => {
+      return (
+        <Phone key={index} id={item.id} Name={item.Name} Phone={item.Phone} sent={item.sent}></Phone>
+      )
+    })
+
+    return(
+      <table className="table table-stripped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {nodes}
+        </tbody>
+      </table>
     )
   }
 }
 
-export default PhoneList;
+const mapStateToProps = (state) => ({
+  phones: state.phones
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  loadPhone: () => dispatch(loadPhone())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PhoneList)
