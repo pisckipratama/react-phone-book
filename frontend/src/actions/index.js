@@ -103,8 +103,8 @@ export const deletePhoneFailure = () => ({
 
 export const deletePhone = (id) => {
   const deleteQuery = gql`
-  mutation removeUser($id: String!) {
-    removeUser(id: $id) {
+  mutation removePhone($id: String!) {
+    removePhone(id: $id) {
       id
     }
   }`;
