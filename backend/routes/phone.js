@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
   const phoneReferences = firebase.database().ref('/Phones/');
 
   phoneReferences.on('value', (snapshoot) => {
-    console.log(snapshoot.val());
     res.json(snapshoot.val());
     phoneReferences.off('value');
   }, (errorObject) => {

@@ -8,7 +8,7 @@ const getPhones = () => {
       if (folders === null) {
         resolve([]);
       } else {
-        const data = Object.keys(folders).map(o => Object.assign({ id: o }, folders[0]))
+        const data = Object.keys(folders).map(o => Object.assign({ id: o }, folders[o]))
         resolve(data);
       }
       phoneReferences.off('value');

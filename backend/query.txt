@@ -1,0 +1,34 @@
+--> get all phone
+query {
+  phones {
+    id
+    Name
+    Phone
+  }
+}
+
+--> add phone
+mutation {
+  addPhone(id:"4", Name: "Batman", Phone: "081322899324") {
+    id
+    Name
+    Phone
+  }
+}
+
+--> update phone
+mutation {
+  updatePhone(id:"4", Name: "Batman", Phone: "081322123456") {
+    id
+    Name
+    Phone
+  }
+}
+
+--> remove phone
+mutation {
+  removePhone(id:"4") {
+    id
+  }
+}
+
