@@ -1,11 +1,13 @@
 # Phone Books App
 
-Create Simple Phone Book App for Mastering ReactJS and Redux
+Create Simple Phone Book App for Mastering GraphQL, Apollo, Firebase, ReactJS and Redux
 
 Tech Stack:
-* MongoDB
+* Firebase
 * Express.js
+* GraphQL
 * React.js
 * NodeJS
 * Redux
+* Apollo
 * Bootstrap
