@@ -137,19 +137,19 @@ export const resendPhone = (id, Name, Phone) => {
   }`;
   return dispatch => {
     return client.mutate({
-        mutation: addQuery,
-        variables: {
-          id,
-          Name,
-          Phone
-        }
-      })
-      .then(function (response) {
-        dispatch(postPhoneSuccess(response))
-      })
-      .catch(function (error) {
-        console.error(error);
-        dispatch(postPhoneFailure(id))
-      });
+      mutation: addQuery,
+      variables: {
+        id,
+        Name,
+        Phone
+      }
+    })
+    .then((response) => {
+      dispatch(postPhoneSuccess(response))
+    }).catch((err) => {
+      console.error(err)
+      dispatch(postPhoneFailure(id))
+    });
   }
 }
+

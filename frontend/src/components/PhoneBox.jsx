@@ -5,14 +5,14 @@ import PhoneForm from '../containers/PhoneForm';
 export default class PhoneBox extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="card">
           <div className="card-header text-center">
-            PHONES BOOK
+            <h1> <i className="fa fa-address-book"></i> Phones Book App</h1>
           </div>
           <div className="card-body">
+            <PhoneForm /> <br/>
             <PhoneList />
-            <PhoneForm />
           </div>
           <div className="card-footer text-center">
             Dibuat dengan Cinta oleh Piscki F. Pratama
